@@ -1,5 +1,7 @@
 package com.example.demokeycloakvsspringboot.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -12,23 +14,20 @@ import java.util.ResourceBundle;
 @RequestMapping("/api/v1")
 @RestController
 public class ControllerHello {
-    ResourceBundle rb;
 
-    ControllerHello(){
-        rb = ResourceBundle.getBundle("languagescode.MyMessage",
-                Locale.getDefault());
-    }
+    @Autowired
+    private MessageSource messageSource;
 
     @GetMapping("/helloAdmin")
     @PreAuthorize("hasRole('client-admin')")
     public String helloAdmin() {
-        return rb.getString("helloAdmin");
+        return messageSource.getMessage("hello.admin", null, Locale.getDefault());
     }
 
     @GetMapping("/helloSeller")
     @PreAuthorize("hasRole('client-seller')")
     public String helloSeller() {
-        return rb.getString("helloSeller");
+        return messageSource.getMessage("hello.seller", null, Locale.getDefault());
     }
 
     /*
@@ -38,11 +37,9 @@ public class ControllerHello {
     @PreAuthorize("hasRole('client-admin') or hasRole('client-seller')")
     public String helloLanguage(@RequestHeader(name="Accept-Language",
             required=false) Locale locale) {
-        if(locale== null) {
+        if(locale == null) {
             locale = Locale.getDefault();
         }
-        rb = ResourceBundle.getBundle("languagescode.MyMessage",
-                locale);
-        return rb.getString("hello");
+        return messageSource.getMessage("hello", null, locale);
     }
 }

@@ -15,8 +15,8 @@ public class MyMessage_en_US extends ListResourceBundle {
 
             //Hello controller
             {"hello", "Hello"},
-            {"helloAdmin", "Hello Admin"},
-            {"helloSeller", "Hello Seller"},
+            {"hello.Admin", "Hello Admin"},
+            {"hello.Seller", "Hello Seller"},
 
             //Product service
             {"ProductNotFound", "Product not found"},

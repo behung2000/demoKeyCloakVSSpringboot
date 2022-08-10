@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 @Setter
 public class ProductException extends RuntimeException {
     private final String keyMess;
-    private final String locale = Locale.getDefault().toString();
+    private final Locale locale = Locale.getDefault();
     private static final  ResourceBundle rb = ResourceBundle.getBundle("languagescode.MyMessage",
             Locale.getDefault());
 

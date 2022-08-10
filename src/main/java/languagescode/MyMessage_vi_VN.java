@@ -14,8 +14,8 @@ public class MyMessage_vi_VN extends ListResourceBundle {
 
             //Hello controller
             {"hello", "Xin chào"},
-            {"helloAdmin", "Xin chào Admin"},
-            {"helloSeller", "Xin chào Seller"},
+            {"hello.Admin", "Xin chào Admin"},
+            {"hello.Seller", "Xin chào Seller"},
 
             //Product service
             {"ProductNotFound", "Sản phẩm không tồn tại"},
