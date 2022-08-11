@@ -22,10 +22,12 @@ keycloak:
   realm: demoSpringBoot
   resource: take-user-role
   credentials:
-    secret: 5M9gCsK3LziTggAoQGUekFfJqW53U8iM
-  use-resource-role-mappings: 'true'
+    secret: FemdGmhdP3IC22irDACPgnuU5fbbKrN2
+  use-resource-role-mappings: true
   ssl-required: external
-  public-client: 'false'
+  public-client: false
+  bearer-only: true
+  cors: true
 server:
   port: '8081'
 

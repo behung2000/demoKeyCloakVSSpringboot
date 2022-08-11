@@ -23,13 +23,13 @@ public class ControllerHello {
     @GetMapping("/helloAdmin")
     @PreAuthorize("hasRole('client-admin')")
     public String helloAdmin() {
-        return messageSource.getMessage("hello.admin", null, Locale.getDefault());
+        return messageSource.getMessage("hello.Admin", null, Locale.getDefault());
     }
 
     @GetMapping("/helloSeller")
     @PreAuthorize("hasRole('client-seller')")
     public String helloSeller() {
-        return messageSource.getMessage("hello.seller", null, Locale.getDefault());
+        return messageSource.getMessage("hello.Seller", null, Locale.getDefault());
     }
 
     /*
