@@ -23,11 +23,10 @@ keycloak:
   resource: take-user-role
   credentials:
     secret: FemdGmhdP3IC22irDACPgnuU5fbbKrN2
-  use-resource-role-mappings: true
+  use-resource-role-mappings: 'true'
   ssl-required: external
-  public-client: false
-  bearer-only: true
-  cors: true
+  public-client: 'false'
+  bearer-only: 'true'
 server:
   port: '8081'
 

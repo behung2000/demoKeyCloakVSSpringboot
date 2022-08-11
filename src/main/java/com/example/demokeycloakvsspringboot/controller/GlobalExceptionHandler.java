@@ -32,26 +32,24 @@ public class GlobalExceptionHandler {
                                                            final WebRequest request) {
         final String source = e.getClass().getSimpleName();
         log.error("Handling exception {} due to {}", source, e.getMessage());
-        /*
+
         if(e instanceof AccessDeniedException) {
             final ApiError apiError = new ApiError(HttpStatus.FORBIDDEN.value(),
                     e.getMessage(), source);
             return ResponseEntity.status(HttpStatus.FORBIDDEN.value())
                     .body(apiError);
         }
-        else{
-         */
-            if(e instanceof ProductException) {
+        else {
+            if (e instanceof ProductException) {
                 String keyMess = ((ProductException) e).getKeyMess();
                 int httpstatus = HttpStatus.BAD_REQUEST.value();
-                if(keyMess.equals("ProductNotFound")) {
+                if (keyMess.equals("ProductNotFound")) {
                     httpstatus = HttpStatus.NOT_FOUND.value();
                 }
                 final ApiError apiError = new ApiError(httpstatus,
                         e.getMessage(), source);
                 return ResponseEntity.status(httpstatus).body(apiError);
-            }
-            else{
+            } else {
                 log.warn("Unknown exception type: " + e.getClass().getName());
                 final HttpHeaders headers = new HttpHeaders();
                 final HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -61,6 +59,7 @@ public class GlobalExceptionHandler {
                 return handleExceptionInternal(e, apiError, headers, status,
                         request);
             }
+        }
     }
 
     protected ResponseEntity<ApiError> handleExceptionInternal(
