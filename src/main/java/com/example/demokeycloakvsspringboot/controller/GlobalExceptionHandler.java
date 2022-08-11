@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -34,10 +35,12 @@ public class GlobalExceptionHandler {
         log.error("Handling exception {} due to {}", source, e.getMessage());
 
         if(e instanceof AccessDeniedException) {
-            final ApiError apiError = new ApiError(HttpStatus.FORBIDDEN.value(),
+
+            final ApiError apiError = new ApiError(HttpStatus.UNAUTHORIZED.value(),
                     e.getMessage(), source);
-            return ResponseEntity.status(HttpStatus.FORBIDDEN.value())
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED.value())
                     .body(apiError);
+
         }
         else {
             if (e instanceof ProductException) {

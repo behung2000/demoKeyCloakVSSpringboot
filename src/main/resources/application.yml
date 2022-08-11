@@ -26,7 +26,6 @@ keycloak:
   use-resource-role-mappings: 'true'
   ssl-required: external
   public-client: 'false'
-  bearer-only: 'true'
 server:
   port: '8081'
 

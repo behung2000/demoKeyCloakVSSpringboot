@@ -39,6 +39,9 @@ public class ControllerHello {
     @PreAuthorize("hasRole('client-admin') or hasRole('client-seller')")
     public String helloLanguage(@RequestHeader(name="Accept-Language",
             required=false) Locale locale) {
-        return messageSource.getMessage("hello", null, LocaleContextHolder.getLocale());
+        if(locale == null) {
+            locale = LocaleContextHolder.getLocale();
+        }
+        return messageSource.getMessage("hello", null, locale);
     }
 }
