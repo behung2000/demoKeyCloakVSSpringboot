@@ -50,7 +50,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 //Yêu cầu xác thực khi truy cập vào
-                .antMatchers("/").permitAll()
+                .antMatchers("/api/v1").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
@@ -58,6 +58,6 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 //Logout
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/api/v1/helloAdmin");
+                .logoutSuccessUrl("/api/v1/helloLanguage");
     }
 }
