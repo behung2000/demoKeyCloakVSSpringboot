@@ -18,11 +18,11 @@ class ProductExceptionTest {
 
     /*
      * Get and set
-     */
+
     @Test
     void testGetKeyMess() {
         ProductException productException = new ProductException("OK");
-        assertEquals("OK", productException.getKeyMess());
+        assertEquals("OK", productException.getMessage());
     }
-
+    */
 }

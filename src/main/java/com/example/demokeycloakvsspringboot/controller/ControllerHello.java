@@ -2,6 +2,7 @@ package com.example.demokeycloakvsspringboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -17,6 +18,7 @@ public class ControllerHello {
 
     @Autowired
     private MessageSource messageSource;
+
 
     @GetMapping("/helloAdmin")
     @PreAuthorize("hasRole('client-admin')")
@@ -37,9 +39,6 @@ public class ControllerHello {
     @PreAuthorize("hasRole('client-admin') or hasRole('client-seller')")
     public String helloLanguage(@RequestHeader(name="Accept-Language",
             required=false) Locale locale) {
-        if(locale == null) {
-            locale = Locale.getDefault();
-        }
-        return messageSource.getMessage("hello", null, locale);
+        return messageSource.getMessage("hello", null, LocaleContextHolder.getLocale());
     }
 }

@@ -1,21 +1,31 @@
 package com.example.demokeycloakvsspringboot.service;
 
-import lombok.Getter;
-import lombok.Setter;
 
+import lombok.Getter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 @Getter
-@Setter
-public class ProductException extends RuntimeException {
+public class ProductException extends RuntimeException{
     private final String keyMess;
-    private final Locale locale = Locale.getDefault();
-    private static final  ResourceBundle rb = ResourceBundle.getBundle("languagescode.MyMessage",
-            Locale.getDefault());
+    private final Locale locale;
 
     public ProductException(String keyMess) {
-        super(rb.getString(keyMess));
+        this(keyMess, Locale.getDefault());
+    }
+
+    public ProductException(String keyMess, Locale locale) {
         this.keyMess = keyMess;
+        this.locale = locale;
+    }
+
+    public static String getMessageForLocale(String keyMess, Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("languagescode.MyMessage", locale);
+        return bundle.getString(keyMess)+" 'for locale: "+locale.toString()+"'";
+    }
+
+    @Override
+    public String getMessage() {
+        return getMessageForLocale(keyMess, locale);
     }
 }

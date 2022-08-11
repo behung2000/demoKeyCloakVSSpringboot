@@ -47,9 +47,8 @@ public class GlobalExceptionHandler {
                 if(keyMess.equals("ProductNotFound")) {
                     httpstatus = HttpStatus.NOT_FOUND.value();
                 }
-                String mess = e.getMessage() + " -- for locale -> " + ((ProductException) e).getLocale();
                 final ApiError apiError = new ApiError(httpstatus,
-                        mess, source);
+                        e.getMessage(), source);
                 return ResponseEntity.status(httpstatus).body(apiError);
             }
             else{
