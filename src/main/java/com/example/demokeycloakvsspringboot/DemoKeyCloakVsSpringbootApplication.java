@@ -24,7 +24,6 @@ public class DemoKeyCloakVsSpringbootApplication {
     private static final Logger log = LoggerFactory
             .getLogger(DemoKeyCloakVsSpringbootApplication.class);
 
-
     @Bean
     public KeycloakSpringBootConfigResolver keycloakSpringBootConfigResolver(){
         return new KeycloakSpringBootConfigResolver();
@@ -51,7 +50,6 @@ public class DemoKeyCloakVsSpringbootApplication {
         messageSource.setBasename("MyMessage");
         return messageSource;
     }
-
 
     //configuring swagger
     @Bean
