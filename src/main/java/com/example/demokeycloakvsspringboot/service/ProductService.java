@@ -25,8 +25,8 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    private static final String KEY_PRODUCT_NOT_FOUND = "ProductNotFound";
-    private static final String KEY_PRODUCT_ID_ERROR = "ProductIdError";
+    private static final String KEY_PRODUCT_NOT_FOUND = "product.Not.Found";
+    private static final String KEY_PRODUCT_ID_ERROR = "product.Id.Error";
 
 
     /*
@@ -59,14 +59,14 @@ public class ProductService {
      */
     public String checkNameVsPrice(ProductDTO product){
         if(product.getName()==null || product.getName().trim().length()==0)
-            return "ProductNameNull";
+            return "product.Name.Null";
         try{
             int i = Integer.parseInt(product.getPrice());
             if(i<=0)
-                return "ProductPriceError";
+                return "product.Price.Error";
         }
         catch (NumberFormatException e){
-            return "ProductPriceError";
+            return "product.Price.Error";
         }
         return "OK";
     }

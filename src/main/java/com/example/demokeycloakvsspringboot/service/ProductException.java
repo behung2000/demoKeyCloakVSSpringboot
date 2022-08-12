@@ -20,7 +20,7 @@ public class ProductException extends RuntimeException{
     }
 
     public static String getMessageForLocale(String keyMess, Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("languagescode.MyMessage", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("MyMessage", locale);
         return bundle.getString(keyMess)+" 'for locale: "+locale.toString()+"'";
     }
 
